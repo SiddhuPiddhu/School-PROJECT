@@ -1,0 +1,44 @@
+students = []
+
+while True:
+    print("\nMenu:")
+    print("a) Enter student details")
+    print("b) Search student")
+    print("c) Display all students")
+    print("d) Merit List")
+    print("e) Exit")
+
+    choice = input("Enter your choice: ")
+
+    if choice == 'a':
+        name = input("Enter name: ")
+        marks = int(input("Enter total marks: "))
+        average = float(input("Enter average: "))
+        students.append((name, marks, average))
+
+    elif choice == 'b':
+        name = input("Enter name to search: ")
+        found = False
+        for student in students:
+            if student[0] == name:
+                print(f"Name: {student[0]}, Marks: {student[1]}, Average: {student[2]}, Result: {'pass' if student[2] > 32 else 'fail'}")
+                found = True
+                break
+        if not found:
+            print("Student not found.")
+
+    elif choice == 'c':
+        for student in students:
+            print(f"Name: {student[0]}, Total Marks: {student[1]}, Average: {student[2]}")
+
+    elif choice == 'd':
+        for student in students:
+            if student[2] > 74:
+                print(f"Name: {student[0]}, Average: {student[2]}")
+
+    elif choice == 'e':
+        print("Exiting program.")
+        break
+
+    else:
+        print("Invalid choice. Please try again.")

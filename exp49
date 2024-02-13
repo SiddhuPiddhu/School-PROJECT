@@ -1,0 +1,53 @@
+friends = {}
+
+while True:
+    print("\nMenu:")
+    print("a) Display all friends and phone numbers")
+    print("b) Add a new friend")
+    print("c) Modify a friend's phone number")
+    print("d) Delete a friend")
+    print("e) Check if a friend is present")
+    print("f) Display friends in sorted order of names")
+    print("g) Exit")
+
+    choice = input("Enter your choice: ")
+
+    if choice == 'a':
+        print("Friends and their phone numbers:")
+        for name, phone_number in friends.items():
+            print(f"Name: {name}, Phone number: {phone_number}")
+    elif choice == 'b':
+        name = input("Enter the name of the new friend: ")
+        phone_number = input("Enter the phone number of the new friend: ")
+        friends[name] = phone_number
+        print("New friend added successfully.")
+    elif choice == 'c':
+        name = input("Enter the name of the friend whose phone number you want to modify: ")
+        if name in friends:
+            new_phone_number = input("Enter the new phone number: ")
+            friends[name] = new_phone_number
+            print("Phone number modified successfully.")
+        else:
+            print("Friend not found in the dictionary.")
+    elif choice == 'd':
+        name = input("Enter the name of the friend you want to delete: ")
+        if name in friends:
+            del friends[name]
+            print("Friend deleted successfully.")
+        else:
+            print("Friend not found in the dictionary.")
+    elif choice == 'e':
+        name = input("Enter the name of the friend you want to check: ")
+        if name in friends:
+            print("Friend is present in the dictionary.")
+        else:
+            print("Friend is not present in the dictionary.")
+    elif choice == 'f':
+        print("Sorted list of friends:")
+        for name, phone_number in sorted(friends.items()):
+            print(f"Name: {name}, Phone number: {phone_number}")
+    elif choice == 'g':
+        print("Exiting program.")
+        break
+    else:
+        print("Invalid choice. Please try again.")
